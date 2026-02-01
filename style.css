@@ -1,0 +1,1002 @@
+/* ============================
+   মূল স্টাইলস - style.css
+   দীপ্ত সরকারের ব্যক্তিগত ওয়েবসাইট
+   ============================ */
+
+/* ১. রিসেট এবং বেসিক সেটআপ */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #7c3aed;
+    --accent-color: #10b981;
+    --dark-color: #1e293b;
+    --light-color: #f8fafc;
+    --text-color: #334155;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Inter', 'Noto Sans Bengali', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ২. টাইপোগ্রাফি */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark-color);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+/* ৩. কন্টেইনার */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ৪. লোডিং স্ক্রীন */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.loading-screen p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* ৫. নেভিগেশন বার */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo i {
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* ৬. হিরো সেকশন */
+.hero-section {
+    padding: 10rem 0 5rem;
+    background: var(--gradient);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="rgba(255,255,255,0.1)" d="M0,0 L1000,0 L1000,1000 L0,1000 Z"/></svg>');
+    opacity: 0.1;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-image {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.image-placeholder {
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: var(--primary-color);
+    font-size: 4rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.status-indicator.online {
+    background: var(--accent-color);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ৭. বাটন স্টাইলস */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* ৮. সেকশন কমন স্টাইলস */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-title i {
+    color: var(--primary-color);
+}
+
+/* ৯. সম্পর্কে সেকশন */
+.about-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+}
+
+.info-item i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.skills-section {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.skills-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skill-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skill-bar {
+    height: 10px;
+    background: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+/* ১০. প্রজেক্টস সেকশন */
+.projects-section {
+    padding: 5rem 0;
+    background: var(--light-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.project-tech span {
+    background: var(--light-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+/* ১১. AI সহকারী সেকশন */
+.assistant-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.assistant-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.assistant-info {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.assistant-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 3rem;
+}
+
+.assistant-features {
+    list-style: none;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.assistant-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.assistant-features i {
+    color: var(--accent-color);
+}
+
+.assistant-chat {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: var(--gradient);
+    color: white;
+    padding: 1rem 1.5rem;
+}
+
+.chat-messages {
+    height: 300px;
+    padding: 1.5rem;
+    overflow-y: auto;
+    background: var(--light-color);
+}
+
+.message {
+    margin-bottom: 1rem;
+    max-width: 80%;
+}
+
+.assistant-message {
+    margin-right: auto;
+}
+
+.message-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.chat-input {
+    display: flex;
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid var(--border-color);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.send-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.send-btn:hover {
+    transform: scale(1.1);
+}
+
+.quick-questions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--light-color);
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quick-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* ১২. যোগাযোগ সেকশন */
+.contact-section {
+    padding: 5rem 0;
+    background: var(--light-color);
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item i {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ১৩. ফুটার */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+/* ১৪. রেসপন্সিভ ডিজাইন */
+@media (max-width: 992px) {
+    .about-content,
+    .assistant-container,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* লগইন বাটন স্টাইলস */
+.login-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 25px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #059669, #047857) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-login-small {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-login-small:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+}
+
+/* প্রাইভেট অ্যাক্সেস সেকশন */
+.private-access {
+    background: rgba(16, 185, 129, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border-left: 4px solid #10b981;
+}
+
+.private-access h4 {
+    color: #10b981;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-details {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+/* ফুটার লগইন বাটন */
+.footer-login-btn {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.footer-login-btn:hover {
+    background: #059669;
+}
+
+/* মোবাইল রেস্পন্সিভ */
+@media (max-width: 768px) {
+    .login-btn {
+        padding: 6px 15px !important;
+        font-size: 14px;
+        margin-left: 5px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 10px;
+    }
+}
+
+/* প্রোফাইল ফটো স্টাইলস */
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 173, 181, 0.4);
+}
+
+/* প্লেসহোল্ডার যদি ছবি না থাকে */
+.profile-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #00adb5;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.profile-photo-placeholder .initials {
+    font-size: 4rem;
+}
+
+.profile-photo-placeholder small {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* লোগো স্টাইলস */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+/* ইমেজ লোগো */
+.logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* টেক্সট লোগো */
+.logo-text {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* আইকন লোগো */
+.logo-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* লোগো টেক্সট */
+.logo-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.logo-first {
+    color: var(--primary-color);
+}
+
+.logo-last {
+    color: var(--secondary-color);
+}
+
+/* ফুটার লোগো */
+.footer-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo .logo-img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* রেস্পন্সিভ */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 35px;
+    }
+    
+    .logo-name {
+        font-size: 1.3rem;
+    }
+    
+    .logo-text {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}

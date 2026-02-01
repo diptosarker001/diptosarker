@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipto Sarker | Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="public/favicon.jpg" type="image/x-icon">
+</head>
+<body>
+    <!-- লোডিং স্ক্রীন -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p>লোড হচ্ছে...</p>
+    </div>
+
+    <!-- নেভিগেশন বার - লগইন লিংক সহ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>দীপ্ত সরকার</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home"><i class="fas fa-home"></i> হোম</a>
+                <a href="#about"><i class="fas fa-user"></i> সম্পর্কে</a>
+                <a href="#projects"><i class="fas fa-project-diagram"></i> প্রজেক্ট</a>
+                <a href="#assistant"><i class="fas fa-robot"></i> AI সহকারী</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> যোগাযোগ</a>
+                <!-- লগইন বাটন -->
+                <a href="private/login.html" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> লগইন
+                </a>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- হোম সেকশন - লগইন বাটন সহ -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="profile-image">
+                   <!-- আপনার ফটো থাকলে -->
+<img src="public/images/profile.jpg" alt="দীপ্ত সরকার" class="profile-photo" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
+
+<!-- প্লেসহোল্ডার (যদি ফটো না থাকে) -->
+<div id="placeholder" class="profile-photo-placeholder" style="display: none;">
+    <span class="initials">DS</span>
+    <small>ছবি যোগ করুন</small>
+</div>
+
+<script>
+// ফটো লোড না হলে প্লেসহোল্ডার দেখাবে
+document.addEventListener('DOMContentLoaded', function() {
+    const profilePhoto = document.querySelector('.profile-photo');
+    const placeholder = document.getElementById('placeholder');
+    
+    // ফটো চেক করুন
+    if (!profilePhoto || profilePhoto.src.includes('placeholder')) {
+        if (placeholder) placeholder.style.display = 'flex';
+    }
+});
+</script>
+                    </div>
+                    <div class="status-indicator online"></div>
+                </div>
+                <h1 class="hero-title">দীপ্ত সরকার</h1>
+                <p class="hero-subtitle">ওয়েব ডেভেলপার | প্রোগ্রামার | টেক এনথুজিয়াস্ট</p>
+                <p class="hero-description">
+                    আমার ব্যক্তিগত ডিজিটাল স্পেসে আপনাকে স্বাগতম। এখানে আপনি আমার সম্পর্কে জানতে পারবেন 
+                    এবং আমার AI সহকারীর সাথে কথা বলতে পারবেন। প্রাইভেট ড্যাশবোর্ডে আপনার ব্যক্তিগত টাস্কস এবং নোটস ম্যানেজ করুন।
+                </p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">
+                        <i class="fas fa-user-circle"></i> আমার সম্পর্কে
+                    </a>
+                    <a href="#assistant" class="btn btn-secondary">
+                        <i class="fas fa-robot"></i> AI সহকারী
+                    </a>
+                    <a href="private/login.html" class="btn btn-login">
+                        <i class="fas fa-lock"></i> প্রাইভেট লগইন
+                    </a>
+                    <a href="public/resume.pdf" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> রিজিউমি
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- আমার সম্পর্কে সেকশন -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> আমার সম্পর্কে</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>আমি একজন প্যাশনেট ওয়েব ডেভেলপার যার টেকনোলজি এবং প্রোগ্রামিংয়ে গভীর আগ্রহ রয়েছে। 
+                    নতুন চ্যালেঞ্জ গ্রহণ করতে এবং নতুন কিছু শিখতে আমি ভালোবাসি।</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>শিক্ষা</h4>
+                                <p>কম্পিউটার সায়েন্স এন্ড ইঞ্জিনিয়ারিং</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <h4>অভিজ্ঞতা</h4>
+                                <p>৩+ বছর ওয়েব ডেভেলপমেন্ট</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>লোকেশন</h4>
+                                <p>নেত্রকোনা, বাংলাদেশ</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <h4>ভাষা</h4>
+                                <p>বাংলা, ইংরেজি, হিন্দি</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <h3><i class="fas fa-code"></i> টেকনিক্যাল স্কিলস</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-name">HTML/CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Database</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- প্রজেক্টস সেকশন -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> আমার প্রজেক্টসমূহ</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>পার্সোনাল পোর্টফোলিও</h3>
+                    <p>এই ওয়েবসাইটটি সম্পূর্ণভাবে আমার নিজের তৈরি। HTML, CSS, JavaScript ব্যবহার করে তৈরি করা হয়েছে।</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>ই-কমার্স ওয়েবসাইট</h3>
+                    <p>সম্পূর্ণ ফাংশনাল ই-কমার্স সাইট React এবং Node.js ব্যবহার করে তৈরি।</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>টাস্ক ম্যানেজমেন্ট অ্যাপ</h3>
+                    <p>ব্যক্তিগত ব্যবহারের জন্য টাস্ক ম্যানেজমেন্ট অ্যাপ্লিকেশন।</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>Firebase</span>
+                        <span>PWA</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>ওয়েদার অ্যাপ্লিকেশন</h3>
+                    <p>রিয়েল-টাইম আবহাওয়ার তথ্য প্রদর্শনের অ্যাপ্লিকেশন।</p>
+                    <div class="project-tech">
+                        <span>API</span>
+                        <span>JavaScript</span>
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI সহকারী সেকশন - লগইন সুবিধা যোগ -->
+    <section id="assistant" class="assistant-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-robot"></i> AI ব্যক্তিগত সহকারী</h2>
+            <div class="assistant-container">
+                <div class="assistant-info">
+                    <div class="assistant-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>আপনার ডিজিটাল সহকারী</h3>
+                    <p>এই AI সহকারী আপনাকে সাহায্য করবে:</p>
+                    <ul class="assistant-features">
+                        <li><i class="fas fa-check-circle"></i> প্রশ্নের উত্তর প্রদান</li>
+                        <li><i class="fas fa-check-circle"></i> টাস্ক ম্যানেজমেন্ট</li>
+                        <li><i class="fas fa-check-circle"></i> নোট সংরক্ষণ</li>
+                        <li><i class="fas fa-check-circle"></i> দৈনিক পরিকল্পনা</li>
+                        <li><i class="fas fa-check-circle"></i> তথ্য অনুসন্ধান</li>
+                    </ul>
+                    
+                    <!-- প্রাইভেট অ্যাক্সেস সেকশন -->
+                    <div class="private-access">
+                        <h4><i class="fas fa-lock"></i> প্রাইভেট অ্যাক্সেস</h4>
+                        <p>লগইন করে সম্পূর্ণ সুবিধা উপভোগ করুন:</p>
+                        <a href="private/login.html" class="btn btn-login-small">
+                            <i class="fas fa-sign-in-alt"></i> প্রাইভেট লগইন
+                        </a>
+                        <div class="login-details">
+                    
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="assistant-chat">
+                    <div class="chat-header">
+                        <h4><i class="fas fa-comments"></i> AI সহকারীর সাথে কথা বলুন</h4>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message assistant-message">
+                            <div class="message-content">
+                                <strong>AI সহকারী:</strong> হ্যালো! আমি আপনার AI সহকারী। কিভাবে আপনাকে সাহায্য করতে পারি?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="আপনার প্রশ্ন লিখুন...">
+                        <button onclick="sendMessage()" class="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="quick-questions">
+                        <button onclick="askQuestion('তোমার কি কি কাজ করতে পারো?')" class="quick-btn">
+                            তুমি কি করতে পারো?
+                        </button>
+                        <button onclick="askQuestion('আজকের তারিখ কি?')" class="quick-btn">
+                            আজকের তারিখ
+                        </button>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- যোগাযোগ সেকশন -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> যোগাযোগ করুন</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>আমার সাথে যোগাযোগ করুন</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>ইমেইল</h4>
+                            <p>example@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>ফোন</h4>
+                            <p>+৮৮০ ৯৬৩৮ ৪৮৬৬২০</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>ঠিকানা</h4>
+                            <p>নেত্রকোনা, বাংলাদেশ</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-lock"></i>
+                        <div>
+                            <h4>প্রাইভেট অ্যাক্সেস</h4>
+                            <p><a href="private/login.html" style="color: #10b981; text-decoration: none;">
+                                <i class="fas fa-sign-in-alt"></i> লগইন করুন
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="আপনার নাম" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="আপনার ইমেইল" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="বিষয়" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="আপনার মেসেজ" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> মেসেজ পাঠান
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার - লগইন লিংক সহ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <h3>দীপ্ত সরকার</h3>
+                    <p>ওয়েব ডেভেলপার | প্রোগ্রামার</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>দ্রুত লিংক</h4>
+                    <a href="#home"><i class="fas fa-chevron-right"></i> হোম</a>
+                    <a href="#about"><i class="fas fa-chevron-right"></i> সম্পর্কে</a>
+                    <a href="#projects"><i class="fas fa-chevron-right"></i> প্রজেক্ট</a>
+                    <a href="#assistant"><i class="fas fa-chevron-right"></i> AI সহকারী</a>
+                    <a href="private/login.html"><i class="fas fa-chevron-right"></i> প্রাইভেট লগইন</a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="private/login.html" class="footer-login-btn">
+                        <i class="fas fa-sign-in-alt"></i> এখনই লগইন করুন
+                    </a>
+                </div>
+                
+                <div class="social-links">
+                    <h4>সামাজিক যোগাযোগ</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; ২০২৪ দীপ্ত সরকার। সকল অধিকার সংরক্ষিত।</p>
+                <p>সংস্করণ ১.০ | 
+                    <a href="private/login.html" style="color: #10b981;">প্রাইভেট ড্যাশবোর্ড</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট -->
+    <script src="script.js"></script>
+    <script>
+        // লগইন সম্পর্কিত অতিরিক্ত ফাংশন
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                updateLoginButton();
+            }
+        }
+        
+        function updateLoginButton() {
+            const loginBtn = document.querySelector('.login-btn');
+            if (loginBtn) {
+                loginBtn.innerHTML = '<i class="fas fa-user-circle"></i> ড্যাশবোর্ড';
+                loginBtn.href = 'private/dashboard.html';
+                loginBtn.style.background = '#10b981';
+            }
+        }
+        
+        // পেজ লোড হলে চেক করুন
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+    </script>

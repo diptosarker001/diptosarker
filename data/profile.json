@@ -1,0 +1,60 @@
+{
+  "name": "দীপ্ত সরকার",
+  "title": "ওয়েব ডেভেলপার",
+  "bio": "আমি একজন প্যাশনেট ওয়েব ডেভেলপার যার টেকনোলজি এবং প্রোগ্রামিংয়ে গভীর আগ্রহ রয়েছে। নতুন চ্যালেঞ্জ গ্রহণ করতে এবং নতুন কিছু শিখতে আমি ভালোবাসি।",
+  "contact": {
+    "email": "dipto.sarker@example.com",
+    "phone": "+880 17XX XXX XXX",
+    "location": "ঢাকা, বাংলাদেশ",
+    "website": "diptosarker.com"
+  },
+  "education": [
+    {
+      "degree": "কম্পিউটার সায়েন্স এন্ড ইঞ্জিনিয়ারিং",
+      "institution": "ঢাকা বিশ্ববিদ্যালয়",
+      "year": "২০২০"
+    }
+  ],
+  "experience": [
+    {
+      "position": "ওয়েব ডেভেলপার",
+      "company": "টেক সলিউশনস লিমিটেড",
+      "duration": "২০২১ - বর্তমান",
+      "description": "ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট, React এবং Node.js প্রজেক্টস"
+    }
+  ],
+  "skills": {
+    "technical": ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Python", "MongoDB", "Git"],
+    "soft": ["প্রব্লেম সলভিং", "টিমওয়ার্ক", "কমিউনিকেশন", "টাইম ম্যানেজমেন্ট"]
+  },
+  "projects": [
+    {
+      "title": "পার্সোনাল পোর্টফোলিও",
+      "description": "সম্পূর্ণ রেস্পন্সিভ ব্যক্তিগত ওয়েবসাইট",
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "link": "https://diptosarker.com"
+    },
+    {
+      "title": "ই-কমার্স প্ল্যাটফর্ম",
+      "description": "সম্পূর্ণ ফাংশনাল অনলাইন শপিং সাইট",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "link": "#"
+    },
+    {
+      "title": "টাস্ক ম্যানেজমেন্ট অ্যাপ",
+      "description": "ব্যক্তিগত টাস্ক ট্র্যাকিং অ্যাপ্লিকেশন",
+      "technologies": ["JavaScript", "Firebase", "PWA"],
+      "link": "#"
+    }
+  ],
+  "languages": [
+    {"name": "বাংলা", "level": "নেটিভ"},
+    {"name": "ইংরেজি", "level": "ফ্লুয়েন্ট"},
+    {"name": "হিন্দি", "level": "বেসিক"}
+  ],
+  "social": {
+    "github": "https://github.com/diptosarker",
+    "linkedin": "https://linkedin.com/in/diptosarker",
+    "twitter": "https://twitter.com/diptosarker"
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "প্রজেক্ট আইডিয়া",
+    "content": "নতুন একটি ই-কমার্স সাইটের ডিজাইন প্ল্যান তৈরি করা প্রয়োজন। ফিচারস: User authentication, Product catalog, Shopping cart, Payment gateway integration, Admin dashboard.",
+    "category": "প্রজেক্ট",
+    "tags": ["ecommerce", "design", "planning"],
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": 2,
+    "title": "মিটিং নোটস",
+    "content": "ক্লায়েন্ট মিটিং - নতুন রিকোয়ার্মেন্টস:\n1. Dark mode support\n2. Mobile app version\n3. Real-time notifications\n4. Analytics dashboard\n5. Multi-language support",
+    "category": "মিটিং",
+    "tags": ["client", "requirements", "meeting"],
+    "createdAt": "2024-01-14T15:15:00Z",
+    "updatedAt": "2024-01-14T15:15:00Z"
+  },
+  {
+    "id": 3,
+    "title": "টেকনিক্যাল রিসার্চ",
+    "content": "নতুন টেকনোলজিস রিসার্চ:\n- Next.js 14 features\n- OpenAI API integration\n- WebSocket for real-time apps\n- PWA best practices\n- Performance optimization techniques",
+    "category": "রিসার্চ",
+    "tags": ["technology", "research", "learning"],
+    "createdAt": "2024-01-13T14:20:00Z",
+    "updatedAt": "2024-01-13T14:20:00Z"
+  },
+  {
+    "id": 4,
+    "title": "ব্যক্তিগত লক্ষ্য",
+    "content": "২০২৪ সালের জন্য লক্ষ্য:\n1. React Native শেখা\n2. ৫টি নতুন প্রজেক্ট কমপ্লিট করা\n3. গিটহাবে ১০০+ কন্ট্রিবিউশন\n4. টেকনিক্যাল ব্লগ লেখা শুরু\n5. Open source প্রজেক্ট কন্ট্রিবিউট",
+    "category": "ব্যক্তিগত",
+    "tags": ["goals", "2024", "learning"],
+    "createdAt": "2024-01-01T09:00:00Z",
+    "updatedAt": "2024-01-01T09:00:00Z"
+  },
+  {
+    "id": 5,
+    "title": "কোড স্নিপেটস",
+    "content": "দরকারী কোড স্নিপেটস:\n\n// API কল ফাংশন\nasync function fetchData(url) {\n  try {\n    const response = await fetch(url);\n    return await response.json();\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}\n\n// LocalStorage হেল্পার\nconst storage = {\n  get: (key) => JSON.parse(localStorage.getItem(key)),\n  set: (key, value) => localStorage.setItem(key, JSON.stringify(value))\n};",
+    "category": "কোড",
+    "tags": ["snippets", "javascript", "utilities"],
+    "createdAt": "2024-01-10T11:45:00Z",
+    "updatedAt": "2024-01-10T11:45:00Z"
+  }
+]

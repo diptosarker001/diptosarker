@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ড্যাশবোর্ড | দীপ্ত সরকার</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #10b981;
+            --dark: #1a202c;
+            --light: #f7fafc;
+            --sidebar-width: 250px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: var(--light);
+            color: var(--dark);
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* সাইডবার */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--dark);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .sidebar-header i {
+            font-size: 30px;
+        }
+        
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: var(--accent);
+        }
+        
+        .menu-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* মেইন কন্টেন্ট */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+        
+        /* টপবার */
+        .topbar {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        /* ড্যাশবোর্ড গ্রিড */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-header h3 {
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-header i {
+            color: var(--primary);
+        }
+        
+        /* টাস্ক লিস্ট */
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+        }
+        
+        .task-priority {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .priority-high { background: #fed7d7; color: #c53030; }
+        .priority-medium { background: #feebc8; color: #c05621; }
+        .priority-low { background: #c6f6d5; color: #276749; }
+        
+        /* নোটস */
+        .note-item {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .note-date {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        /* AI চ্যাট */
+        .ai-chat-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            margin-left: auto;
+        }
+        
+        .message-content {
+            background: white;
+            padding: 12px 18px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .user-message .message-content {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* মোবাইল রেস্পন্সিভ */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- সাইডবার -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-robot"></i>
+            <h2>AI সহকারী</h2>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item active">
+                <i class="fas fa-home"></i> ড্যাশবোর্ড
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-comments"></i> AI চ্যাট
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-tasks"></i> টাস্কস
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-sticky-note"></i> নোটস
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-calendar-alt"></i> ক্যালেন্ডার
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-chart-line"></i> অ্যানালিটিক্স
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-cog"></i> সেটিংস
+            </a>
+            <a href="../index.html" class="menu-item">
+                <i class="fas fa-sign-out-alt"></i> হোমপেজ
+            </a>
+        </div>
+    </div>
+
+    <!-- মেইন কন্টেন্ট -->
+    <div class="main-content">
+        <!-- টপবার -->
+        <div class="topbar">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h4>দীপ্ত সরকার</h4>
+                    <p>ওয়েব ডেভেলপার</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ড্যাশবোর্ড গ্রিড -->
+        <div class="dashboard-grid">
+            <!-- AI চ্যাট কার্ড -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-robot"></i> AI সহকারী</h3>
+                    <span class="status online">অনলাইন</span>
+                </div>
+                <div class="ai-chat-container">
+                    <div class="chat-messages" id="dashboardChat">
+                        <div class="message">
+                            <div class="message-content">
+                                <strong>AI:</strong> হ্যালো দীপ্ত! আজকে কিভাবে সাহায্য করতে পারি?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="dashboardInput" placeholder="আপনার মেসেজ লিখুন...">
+                        <button onclick="sendDashboardMessage()" class="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- টাস্কস কার্ড -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tasks"></i> আজকের টাস্কস</h3>
+                    <button onclick="addNewTask()" class="btn-small">
+                        <i class="fas fa-plus"></i> যোগ করুন
+                    </button>
+                </div>
+                <ul class="task-list" id="taskList">
+                    <li class="task-item">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" class="task-checkbox">
+                            <span>ওয়েবসাইট ডিবাগিং</span>
+                        </div>
+                        <span class="task-priority priority-high">উচ্চ</span>
+                    </li>
+                    <li class="task-item">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" class="task-checkbox">
+                            <span>নতুন প্রজেক্ট প্ল্যান</span>
+                        </div>
+                        <span class="task-priority priority-medium">মধ্যম</span>
+                    </li>
+                    <li class="task-item">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" class="task-checkbox">
+                            <span>ব্লগ আপডেট</span>
+                        </div>
+                        <span class="task-priority priority-low">নিম্ন</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- নোটস কার্ড -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-sticky-note"></i> সাম্প্রতিক নোটস</h3>
+                    <button onclick="addNewNote()" class="btn-small">
+                        <i class="fas fa-plus"></i> নতুন
+                    </button>
+                </div>
+                <div id="notesList">
+                    <div class="note-item">
+                        <h4>প্রজেক্ট আইডিয়া</h4>
+                        <p>নতুন ই-কমার্স সাইটের ডিজাইন প্ল্যান তৈরি করা প্রয়োজন।</p>
+                        <div class="note-date">আজ, ১০:৩০ AM</div>
+                    </div>
+                    <div class="note-item">
+                        <h4>মিটিং নোটস</h4>
+                        <p>ক্লায়েন্টের নতুন রিকোয়ার্মেন্টস গুলো নোট করে রাখতে হবে।</p>
+                        <div class="note-date">গতকাল, ৩:১৫ PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- স্ট্যাটস কার্ড -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> স্ট্যাটিস্টিক্স</h3>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: #667eea;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <h4>৮৫%</h4>
+                            <p>টাস্ক কমপ্লিট</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: #10b981;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>৩৬ ঘন্টা</h4>
+                            <p>প্রোডাক্টিভ সময়</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: #f59e0b;">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div>
+                            <h4>৫টি</h4>
+                            <p>একটিভ প্রজেক্ট</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // সাইডবার টগল
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // ড্যাশবোর্ড AI চ্যাট
+        function sendDashboardMessage() {
+            const input = document.getElementById('dashboardInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // ইউজার মেসেজ যোগ
+            addDashboardMessage(message, 'user');
+            input.value = '';
+            
+            // AI রেসপন্স
+            setTimeout(() => {
+                const responses = [
+                    "আমি আপনার সাথে একমত।",
+                    "আপনি ঠিক বলেছেন।",
+                    "আমি আপনাকে সাহায্য করতে পারি।",
+                    "এটা একটা ভালো আইডিয়া।",
+                    "আপনার প্রজেক্টের জন্য আমি কিছু সাজেশন দিতে পারি।"
+                ];
+                const response = responses[Math.floor(Math.random() * responses.length)];
+                addDashboardMessage(response, 'ai');
+            }, 1000);
+        }
+
+        function addDashboardMessage(text, sender) {
+            const chatContainer = document.getElementById('dashboardChat');
+            const messageDiv = document.createElement('div');
+            
+            messageDiv.className = `message ${sender === 'user' ? 'user-message' : ''}`;
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <strong>${sender === 'ai' ? 'AI' : 'আপনি'}:</strong> ${text}
+                </div>
+            `;
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // টাস্ক যোগ করুন
+        function addNewTask() {
+            const taskName = prompt('নতুন টাস্কের নাম লিখুন:');
+            if (taskName) {
+                const taskList = document.getElementById('taskList');
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task-item';
+                taskItem.innerHTML = `
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" class="task-checkbox">
+                        <span>${taskName}</span>
+                    </div>
+                    <span class="task-priority priority-medium">মধ্যম</span>
+                `;
+                taskList.appendChild(taskItem);
+            }
+        }
+
+        // নোট যোগ করুন
+        function addNewNote() {
+            const noteTitle = prompt('নোটের শিরোনাম:');
+            if (noteTitle) {
+                const noteContent = prompt('নোটের বিস্তারিত:');
+                if (noteContent) {
+                    const notesList = document.getElementById('notesList');
+                    const noteItem = document.createElement('div');
+                    noteItem.className = 'note-item';
+                    noteItem.innerHTML = `
+                        <h4>${noteTitle}</h4>
+                        <p>${noteContent}</p>
+                        <div class="note-date">এখনই</div>
+                    `;
+                    notesList.prepend(noteItem);
+                }
+            }
+        }
+
+        // টাস্ক চেকবক্স হ্যান্ডলার
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('change', function(e) {
+                if (e.target.classList.contains('task-checkbox')) {
+                    const taskItem = e.target.closest('.task-item');
+                    if (e.target.checked) {
+                        taskItem.style.opacity = '0.6';
+                        taskItem.style.textDecoration = 'line-through';
+                    } else {
+                        taskItem.style.opacity = '1';
+                        taskItem.style.textDecoration = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
